@@ -13,21 +13,21 @@ public class Bandit {
     private int roundsPlayed;
 
     // Constructor with name
-    public Bandit(String name, double pricePerRound, double averageWin, double stdDevWin) {
-        this.name = name;
+    public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
         this.pricePerRound = pricePerRound;
         this.averageWin = averageWin;
         this.stdDevWin = stdDevWin;
         this.random = new Random();
         this.overallProfit = 0.0;
         this.roundsPlayed = 0;
+        this.name = "One-Armed Bandit";  // Default name
     }
 
-    // Constructor without name
-    public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
-        this("One-Armed Bandit", pricePerRound, averageWin, stdDevWin);
+    // Constructor with name
+    public Bandit(String name, double pricePerRound, double averageWin, double stdDevWin) {
+        this(pricePerRound, averageWin, stdDevWin); // Call the default constructor
+        this.name = name; //overriding the name
     }
-
 
     // Getters
     public String getName() {
