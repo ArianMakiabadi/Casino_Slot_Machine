@@ -27,7 +27,7 @@ public class BanditApp {
         // Step 5: Play each round
         for (int i = 1; i <= rounds; i++) {
             double win = bandit.play();
-            double lossThisRound = win - bandit.getPricePerRound();
+            double lossThisRound = bandit.getPricePerRound() - win;
             netLoss += lossThisRound;
 
             System.out.printf("%2d    | %7.2f   | %7.2f%n", i, win, netLoss);

@@ -61,7 +61,7 @@ public class Bandit {
     // Play method
     public double play() {
         double win = determineWin();
-        overallProfit += win - pricePerRound;
+        overallProfit += pricePerRound - win;
         roundsPlayed++;
         return win;
     }
