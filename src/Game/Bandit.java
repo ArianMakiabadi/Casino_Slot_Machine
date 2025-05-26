@@ -5,14 +5,14 @@ import java.util.Random;
 public class Bandit {
     //private attributes
     private Random random;
-    private String name;
-    private double pricePerRound;
+    private String name;                   // machine name
+    private double pricePerRound;          // cost to play one round
     private double averageWin;
     private double stdDevWin;
     private double overallProfit;
-    private int roundsPlayed;
+    private int roundsPlayed;              // count of rounds played
 
-    // Constructor with name
+    // Constructor without name
     public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
         this.pricePerRound = pricePerRound;
         this.averageWin = averageWin;
@@ -26,7 +26,7 @@ public class Bandit {
     // Constructor with name
     public Bandit(String name, double pricePerRound, double averageWin, double stdDevWin) {
         this(pricePerRound, averageWin, stdDevWin); // Call the default constructor
-        this.name = name; //overriding the name
+        this.name = name; //overriding the default name
     }
 
     // Getters
@@ -49,5 +49,12 @@ public class Bandit {
     public double getMeanProfitPerRound(){
         if (roundsPlayed==0) return 0.0;
             else return overallProfit / roundsPlayed;
+    }
+
+    // Gaussian payout
+    private double determineWin() {
+        double win = averageWin + stdDevWin * random.nextGaussian();
+        win = Math.max(0, win);
+        return Math.round(win * 10.0) / 10.0;
     }
 }
