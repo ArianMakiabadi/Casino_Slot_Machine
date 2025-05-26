@@ -27,4 +27,27 @@ public class Bandit {
     public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
         this("One-Armed Bandit", pricePerRound, averageWin, stdDevWin);
     }
+
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public double getPricePerRound() {
+        return pricePerRound;
+    }
+
+    public double getOverallProfit() {
+        return overallProfit;
+    }
+
+    public int getRoundsPlayed() {
+        return roundsPlayed;
+    }
+
+    public double getMeanProfitPerRound(){
+        if (roundsPlayed==0) return 0.0;
+            else return overallProfit / roundsPlayed;
+    }
 }
