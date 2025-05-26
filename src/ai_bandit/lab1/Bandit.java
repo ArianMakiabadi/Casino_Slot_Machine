@@ -1,4 +1,4 @@
-package Game;
+package ai_bandit.lab1;
 
 import java.util.Random;
 
