@@ -6,11 +6,11 @@ public class Bandit {
     //private attributes
     private Random random;
     private String name;                   // machine name
-    private double pricePerRound;          // cost to play one round
-    private double averageWin;
-    private double stdDevWin;
+    private double pricePerRound = 1;          // cost to play one round
+    private double averageWin;             //µ
+    private double stdDevWin;              //σ
     private double overallProfit;
-    private int roundsPlayed;              // count of rounds played
+    private int roundsPlayed = 0;              // count of rounds played
 
     // Constructor without name
     public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
@@ -56,5 +56,13 @@ public class Bandit {
         double win = averageWin + stdDevWin * random.nextGaussian();
         win = Math.max(0, win);
         return Math.round(win * 10.0) / 10.0;
+    }
+
+    // Play method
+    public double play() {
+        double win = determineWin();
+        overallProfit += pricePerRound - win;
+        roundsPlayed++;
+        return win;
     }
 }
