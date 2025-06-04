@@ -25,11 +25,41 @@ public class MultiBandit {
     }
 
     // Getters
-    public int getNumberBandits(){
-
+    public int getNumberBandits() {
+        return this.numberBandits;
     }
 
-    public double getPricePerRound(){
+    public double getPricePerRound() {
+        double totalPrice = 0.0D;
 
+        for(int i = 0; i < this.numberBandits; ++i) {
+            totalPrice += this.bandits[i].getPricePerRound();
+        }
+
+        return totalPrice / (double)this.numberBandits;
+    }
+
+    public double getOverallProfit() {
+        double totalProfit = 0.0D;
+
+        for(int i = 0; i < this.numberBandits; ++i) {
+            totalProfit += this.bandits[i].getOverallProfit();
+        }
+
+        return totalProfit;
+    }
+
+    public double getMeanProfitPerRound() {
+        return this.getRoundsPlayed() == 0 ? 0.0D : this.getOverallProfit() / (double)this.getRoundsPlayed();
+    }
+
+    public int getRoundsPlayed() {
+        int totalRoundsPlayed = 0;
+
+        for(int i = 0; i < this.numberBandits; ++i) {
+            totalRoundsPlayed += this.bandits[i].getRoundsPlayed();
+        }
+
+        return totalRoundsPlayed;
     }
 }
