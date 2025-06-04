@@ -62,4 +62,8 @@ public class MultiBandit {
 
         return totalRoundsPlayed;
     }
+
+    public double play(int banditIndex) {
+        return this.bandits[banditIndex].play();
+    }
 }
