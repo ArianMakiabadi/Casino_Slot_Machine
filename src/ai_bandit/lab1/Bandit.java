@@ -1,68 +1,26 @@
 package ai_bandit.lab1;
 
-import java.util.Random;
-
-public class Bandit {
-    //private attributes
-    private Random random;
-    private String name;                   // machine name
-    private double pricePerRound = 1;          // cost to play one round
-    private double averageWin;             //µ
-    private double stdDevWin;              //σ
-    private double overallProfit;
-    private int roundsPlayed = 0;              // count of rounds played
-
-    // Constructor without name
-    public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
-        this.pricePerRound = pricePerRound;
-        this.averageWin = averageWin;
-        this.stdDevWin = stdDevWin;
-        this.random = new Random();
-        this.overallProfit = 0.0;
-        this.roundsPlayed = 0;
-        this.name = "One-Armed Bandit";  // Default name
-    }
+public class Bandit extends Gambling {
+    private double averageWin;   // µ
+    private double stdDevWin;    // σ
 
     // Constructor with name
     public Bandit(String name, double pricePerRound, double averageWin, double stdDevWin) {
-        this(pricePerRound, averageWin, stdDevWin); // Call the default constructor
-        this.name = name; //overriding the default name
+        super(name, pricePerRound);
+        this.averageWin = averageWin;
+        this.stdDevWin = stdDevWin;
     }
 
-    // Getters
-    public String getName() {
-        return name;
+    // Constructor without name
+    public Bandit(double pricePerRound, double averageWin, double stdDevWin) {
+        this("Bandit", pricePerRound, averageWin, stdDevWin); // delegate
     }
 
-    public double getPricePerRound() {
-        return pricePerRound;
-    }
-
-    public double getOverallProfit() {
-        return overallProfit;
-    }
-
-    public int getRoundsPlayed() {
-        return roundsPlayed;
-    }
-
-    public double getMeanProfitPerRound(){
-        if (roundsPlayed==0) return 0.0;
-            else return overallProfit / roundsPlayed;
-    }
-
-    // Gaussian payout
-    private double determineWin() {
+    // Gaussian payout override
+    @Override
+    protected double determineWin() {
         double win = averageWin + stdDevWin * random.nextGaussian();
         win = Math.max(0, win);
         return Math.round(win * 10.0) / 10.0;
-    }
-
-    // Play method
-    public double play() {
-        double win = determineWin();
-        overallProfit += pricePerRound - win;
-        roundsPlayed++;
-        return win;
     }
 }
