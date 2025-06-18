@@ -42,7 +42,7 @@ public abstract class Gambling {
     // Play method
     public double play() {
         double win = determineWin();
-        overallProfit += pricePerRound - win;
+        overallProfit += win - pricePerRound;
         roundsPlayed++;
         return win;
     }
