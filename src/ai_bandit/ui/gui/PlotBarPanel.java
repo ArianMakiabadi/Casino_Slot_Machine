@@ -1,4 +1,4 @@
-package ai_bandit.lab4;
+package ai_bandit.ui.gui;
 
 import javax.swing.*;
 import java.awt.*;

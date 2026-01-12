@@ -1,10 +1,9 @@
-package ai_bandit.lab1;
+package ai_bandit.models;
+
+import ai_bandit.models.Bandit;
 
 public class MultiBandit {
-    // Attributes
     private Bandit[] bandits;
-
-    // Constructor
     public MultiBandit(int numberBandits) {
         bandits = new Bandit[numberBandits];
         int winner = (int)(Math.random() * (double)numberBandits);

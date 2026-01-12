@@ -1,4 +1,6 @@
-package ai_bandit.lab4;
+package ai_bandit.apps;
+
+import ai_bandit.ui.gui.GraphicalUI;
 
 public class App {
     public static void main(String[] args) {

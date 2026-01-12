@@ -1,14 +1,8 @@
-package ai_bandit.lab4;
+package ai_bandit.core;
 
-/**
- * Multi-bandit environment using Bandit class.
- */
 public class MultiBandit {
     private final Bandit[] bandits;
 
-    /**
-     * Construct N bandits, one with higher mean.
-     */
     public MultiBandit(int numberBandits) {
         bandits = new Bandit[numberBandits];
         int winner = (int) (Math.random() * numberBandits);
@@ -20,17 +14,16 @@ public class MultiBandit {
         }
     }
 
-    /** Number of bandits */
     public int getNumberBandits() {
         return bandits.length;
     }
 
-    /** Play bandit at index, returns profit */
     public double play(int index) {
-        return bandits[index].play();
+        double win = bandits[index].play();
+        double price = bandits[index].getPricePerRound();
+        return price - win;
     }
 
-    /** Reset all bandits to initial state */
     public void reset() {
         for (Bandit b : bandits) b.reset();
     }

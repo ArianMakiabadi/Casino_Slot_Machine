@@ -1,4 +1,4 @@
-package ai_bandit.lab1;
+package ai_bandit.core;
 
 public class WheelOfFortune extends Gambling {
     private int numberFields;
@@ -9,13 +9,11 @@ public class WheelOfFortune extends Gambling {
         super("wheelOfFortune", pricePerRound);
         this.categoryWins = categoryWins;
 
-        // 1. Calculate total number of fields
         numberFields = 0;
         for (int count : categoryNumberFields) {
             numberFields += count;
         }
 
-        // 2. Calculate probabilities for each category
         categoryChances = new double[categoryNumberFields.length];
         for (int i = 0; i < categoryNumberFields.length; i++) {
             categoryChances[i] = (double) categoryNumberFields[i] / numberFields;
@@ -28,7 +26,7 @@ public class WheelOfFortune extends Gambling {
 
     @Override
     protected double determineWin() {
-        double r = random.nextDouble(); // inherited protected Random from Gambling
+        double r = random.nextDouble();
         double cumulative = 0.0;
         for (int i = 0; i < categoryChances.length; i++) {
             cumulative += categoryChances[i];
@@ -36,7 +34,6 @@ public class WheelOfFortune extends Gambling {
                 return categoryWins[i];
             }
         }
-        // Fallback: return last prize
         return categoryWins[categoryWins.length - 1];
     }
 }

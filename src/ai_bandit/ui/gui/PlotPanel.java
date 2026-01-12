@@ -1,4 +1,4 @@
-package ai_bandit.lab4;
+package ai_bandit.ui.gui;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -35,7 +35,7 @@ public class PlotPanel extends JPanel {
             absmax = Math.max(Math.abs(minVal), Math.abs(maxVal));
 
             TitledBorder tb = (TitledBorder) getBorder();
-            tb.setTitle(String.format("Available: %.2f (abs max: %.2f)", current, absmax));
+            tb.setTitle(String.format("User profit: %.2f (abs max: %.2f)", current, absmax));
         }
         repaint();
     }
@@ -45,7 +45,7 @@ public class PlotPanel extends JPanel {
         this.profits = null;
         this.absmax = 0;
         TitledBorder tb = (TitledBorder) getBorder();
-        tb.setTitle("Available: 0.00 (abs max: 0.00)");
+        tb.setTitle("User profit: 0.00 (abs max: 0.00)");
         repaint();
     }
 

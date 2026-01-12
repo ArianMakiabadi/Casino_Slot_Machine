@@ -1,13 +1,13 @@
-package ai_bandit.lab1;
+package ai_bandit.core;
 
 import java.util.Random;
 
 public abstract class Gambling {
     protected Random random;
-    private String name;                        // machine name
+    private String name;
     private double pricePerRound = 1;
     private double overallProfit;
-    private int roundsPlayed = 0;              // count of rounds played
+    private int roundsPlayed = 0;
 
     public Gambling(String name, double pricePerRound){
         this.random = new Random();
@@ -17,7 +17,6 @@ public abstract class Gambling {
         this.pricePerRound = pricePerRound;
     }
 
-    // Getters
     public String getName() {
         return name;
     }
@@ -39,7 +38,6 @@ public abstract class Gambling {
         else return overallProfit / roundsPlayed;
     }
 
-    // Play method
     public double play() {
         double win = determineWin();
         overallProfit += win - pricePerRound;
@@ -47,6 +45,5 @@ public abstract class Gambling {
         return win;
     }
 
-    // Gaussian payout
     protected abstract double determineWin();
 }

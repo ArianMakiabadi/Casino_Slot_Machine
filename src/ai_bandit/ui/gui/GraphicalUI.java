@@ -1,4 +1,4 @@
-package ai_bandit.lab4;
+package ai_bandit.ui.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,14 +25,10 @@ public class GraphicalUI extends JFrame {
 
     private void initLayout() {
         setLayout(new BorderLayout());
-        // Create charts panel (left)
         barPanel.setBorder(BorderFactory.createTitledBorder("Bandit selection count"));
-        // The title of the second graph is set dynamically in PlotPanel.java
         JPanel plots = new JPanel(new GridLayout(2, 1));
         plots.add(barPanel);
         plots.add(linePanel);
-
-        // Wrap charts and controls in a split pane to allocate approx 4/5 to charts
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, plots, controls);
         split.setResizeWeight(0.8);
         split.setOneTouchExpandable(true);
@@ -48,9 +44,6 @@ public class GraphicalUI extends JFrame {
     }
 
     private void playRounds(int n) {
-        // Determine epsilon based on selected strategy
-        // If Random is selected, we choose epsilon as 1 else the default value
-        // which is 0.3
         double epsilon = controls.randomBtn.isSelected() ? 1.0 : greedyEpsilon;
         for (int i = 0; i < n; i++) {
             model.play(epsilon);
