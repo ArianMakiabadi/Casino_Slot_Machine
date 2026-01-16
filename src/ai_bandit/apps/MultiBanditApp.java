@@ -1,13 +1,15 @@
-package ai_bandit.lab1; // Assuming new package based on lab instructions
+package ai_bandit.apps;
 
 import java.util.Scanner;
+import ai_bandit.models.MultiBandit;
+import ai_bandit.core.MultiBanditSolver_CLI;
 
 public class MultiBanditApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numberBandits = 7;
         MultiBandit bandits = new MultiBandit(numberBandits);
-        MultiBanditSolver solver = new MultiBanditSolver(bandits); // Initialize the solver
+        MultiBanditSolver_CLI solver = new MultiBanditSolver_CLI(bandits); // Initialize the solver
 
         System.out.printf("%-8s: Multi-armed bandit (%d bandits)\n", "Gambling", Integer.valueOf(numberBandits));
         System.out.printf("%-8s: 1,00 EUR \n", "Price");

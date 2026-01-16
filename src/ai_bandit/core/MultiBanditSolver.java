@@ -1,16 +1,12 @@
-package ai_bandit.lab4;
+package ai_bandit.core;
 
 import java.util.Random;
 
-/**
- * ε-greedy solver using existing MultiBandit API.
- * Minimal changes: reset(), getCounts().
- */
 public class MultiBanditSolver {
     private final MultiBandit bandits;
     private final Random random;
-    private int[] counts;        // rounds played per bandit
-    private double[] wins;       // total profit per bandit
+    private int[] counts;
+    private double[] wins;
     private double epsilon;
 
     public MultiBanditSolver(MultiBandit bandits) {
@@ -22,17 +18,14 @@ public class MultiBanditSolver {
         this.epsilon = 0.0;
     }
 
-    /** Set exploration rate: ε=1.0 => pure random */
     public void setGreedyEpsilon(double epsilon) {
         this.epsilon = epsilon;
     }
 
-    /** Choose an index via ε-greedy */
     public int chooseGreedy() {
         if (random.nextDouble() <= epsilon) {
             return random.nextInt(bandits.getNumberBandits());
         } else {
-            // exploit best average
             boolean allZero = true;
             for (int c : counts) if (c > 0) { allZero = false; break; }
             if (allZero) {
@@ -53,18 +46,15 @@ public class MultiBanditSolver {
         }
     }
 
-    /** Record the profit from playing a bandit */
     public void addBanditResponse(int index, double profit) {
         counts[index]++;
         wins[index] += profit;
     }
 
-    /** Return play-counts for plotting */
     public int[] getCounts() {
         return counts.clone();
     }
 
-    /** Reset solver state (counts, wins, epsilon) */
     public void reset() {
         int n = bandits.getNumberBandits();
         this.counts = new int[n];

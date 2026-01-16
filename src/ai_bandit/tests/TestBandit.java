@@ -1,4 +1,4 @@
-package ai_bandit.lab1;
+package ai_bandit.tests;
 
 import static org.junit.Assert.*;
 import java.lang.reflect.Field;
@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Random;
 
 import org.junit.Test;
+import ai_bandit.core.Bandit;
+import ai_bandit.core.Gambling;
 
 /** Unit tests for lab assignment.<br><br>
  *
@@ -45,7 +47,7 @@ public class TestBandit {
 
     @Test
     public final void test_R01_areVariablesPrivate() {
-        assertTrue(areVariablesPrivate(packagePath + "Bandit"));
+        assertTrue(areVariablesPrivate("ai_bandit.core.Bandit"));
     }
 
     @Test

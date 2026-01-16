@@ -1,4 +1,4 @@
-package ai_bandit.lab4;
+package ai_bandit.ui.gui;
 
 public class PlayThread extends Thread {
     private final Model model;

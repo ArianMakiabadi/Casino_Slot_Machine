@@ -1,4 +1,6 @@
-package ai_bandit.lab1;
+package ai_bandit.models;
+
+import ai_bandit.core.Gambling;
 
 public class Bandit extends Gambling {
     private double averageWin;   // µ

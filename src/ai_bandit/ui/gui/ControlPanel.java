@@ -1,11 +1,8 @@
-package ai_bandit.lab4;
+package ai_bandit.ui.gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Panel with controls and graphs.
- */
 public class ControlPanel extends JPanel {
     final JRadioButton randomBtn = new JRadioButton("Random bandit");
     final JRadioButton greedyBtn = new JRadioButton("Epsilon-greedy");
@@ -18,7 +15,6 @@ public class ControlPanel extends JPanel {
     public ControlPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        // Strategy
         add(new JLabel("Selection strategy:"));
         ButtonGroup group = new ButtonGroup();
         group.add(randomBtn);
@@ -30,7 +26,6 @@ public class ControlPanel extends JPanel {
         add(Box.createVerticalStrut(10));
         add(greedyBtn);
         add(Box.createVerticalStrut(20));
-        // Action buttons
         for (JButton btn : new JButton[]{reset, play1, play10, play100, auto}) {
             btn.setAlignmentX(Component.LEFT_ALIGNMENT);
             btn.setMaximumSize(new Dimension(120, btn.getPreferredSize().height));

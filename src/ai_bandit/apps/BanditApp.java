@@ -1,6 +1,7 @@
-package ai_bandit.lab1;
+package ai_bandit.apps;
 
 import java.util.Scanner;
+import ai_bandit.models.Bandit;
 
 public class BanditApp {
 

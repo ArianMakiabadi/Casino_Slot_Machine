@@ -1,15 +1,16 @@
-package ai_bandit.lab1;
+package ai_bandit.core;
 
 import java.util.Random;
+import ai_bandit.models.MultiBandit;
 
-public class MultiBanditSolver {
+public class MultiBanditSolver_CLI {
     private Random random;
     private MultiBandit bandits;
     private int[] counts; // Stores how many rounds played on each bandit
     private double[] wins; // Stores the total profit (returned amount - cost per round) for each bandit
     private double epsilon;
 
-    public MultiBanditSolver(MultiBandit bandits) {
+    public MultiBanditSolver_CLI(MultiBandit bandits) {
         this.bandits = bandits;
         this.random = new Random();
         int numberOfBandits = bandits.getNumberBandits();
